@@ -3,4 +3,5 @@ __pycache__
 *.pt
 runs/
 dataset/
+weights/
 
