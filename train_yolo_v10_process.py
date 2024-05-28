@@ -115,7 +115,7 @@ class TrainYoloV10(dnntrain.TrainProcess):
                 url = f'https://github.com/{self.repo}/releases/download/{self.version}/{self.model_weights}'
                 download(url=url, dir=self.model_folder, unzip=True)
                 self.model_weights = os.path.join(
-                str(self.model_folder), f'{param.cfg["model_name"]}.pt')
+                str(self.model_folder), self.model_weights)
         else:
             # Set path
             self.model_weights = os.path.join(
