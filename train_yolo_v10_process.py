@@ -110,16 +110,20 @@ class TrainYoloV10(dnntrain.TrainProcess):
             with open(param.cfg["config_file"], 'r') as file:
                 config_file = yaml.safe_load(file)
             self.model_weights = config_file["model"]
+            # Download model if not exist
+            if not os.path.isfile(self.model_weights):
+                url = f'https://github.com/{self.repo}/releases/download/{self.version}/{self.model_weights}'
+                download(url=url, dir=self.model_folder, unzip=True)
+                self.model_weights = os.path.join(
+                str(self.model_folder), f'{param.cfg["model_name"]}.pt')
         else:
             # Set path
-            model_folder = os.path.join(os.path.dirname(
-                os.path.realpath(__file__)), "weights")
             self.model_weights = os.path.join(
-                str(model_folder), f'{param.cfg["model_name"]}.pt')
+                str(self.model_folder), f'{param.cfg["model_name"]}.pt')
             # Download model if not exist
             if not os.path.isfile(self.model_weights):
                 url = f'https://github.com/{self.repo}/releases/download/{self.version}/{param.cfg["model_name"]}.pt'
-                download(url=url, dir=model_folder, unzip=True)
+                download(url=url, dir=self.model_folder, unzip=True)
         
         self.model = YOLOv10(self.model_weights)
 
