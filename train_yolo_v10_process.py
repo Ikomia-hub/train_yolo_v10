@@ -1,15 +1,17 @@
 import copy
+import os
+from datetime import datetime
+import yaml
+import torch
 from ikomia import core, dataprocess
 from ikomia.core.task import TaskParam
 from ikomia.dnn import dnntrain
 from train_yolo_v10.utils.ikutils import prepare_dataset
-import os
-import yaml
-from ultralytics import YOLOv10
-from datetime import datetime
-import torch
 from train_yolo_v10.utils import custom_callbacks
+from ultralytics import YOLOv10
 from ultralytics import download, settings
+
+
 
 # Update a setting
 settings.update({'mlflow': False})
@@ -124,7 +126,7 @@ class TrainYoloV10(dnntrain.TrainProcess):
             if not os.path.isfile(self.model_weights):
                 url = f'https://github.com/{self.repo}/releases/download/{self.version}/{param.cfg["model_name"]}.pt'
                 download(url=url, dir=self.model_folder, unzip=True)
-        
+ 
         self.model = YOLOv10(self.model_weights)
 
         # Add custom MLflow callback to the model
