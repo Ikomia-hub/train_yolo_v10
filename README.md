@@ -21,7 +21,7 @@
 
 Train YOLOv10 object detection models.
 
-![yolov10 illustration](https://raw.githubusercontent.com/Ikomia-hub/train_yolo_v10/images/output.jpg)
+![yolov10 illustration](https://raw.githubusercontent.com/Ikomia-hub/train_yolo_v10/main/images/output.jpg)
 
 ## :rocket: Use with Ikomia API
 

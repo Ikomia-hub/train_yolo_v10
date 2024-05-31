@@ -195,7 +195,7 @@ class TrainYoloV10Factory(dataprocess.CTaskFactory):
         # relative path -> as displayed in Ikomia Studio algorithm tree
         self.info.path = "Plugins/Python/Detection"
         self.info.version = "1.0.0"
-        # self.info.icon_path = "your path to a specific icon"
+        self.info.icon_path = "images/icon.png"
         self.info.authors = "Ao Wang, H. Chen, L. Liu, K. Chen, Z. Lin, J. Han, G. Ding"
         self.info.article = "YOLOv10: Real-Time End-to-End Object Detection"
         self.info.journal = "arXiv"
